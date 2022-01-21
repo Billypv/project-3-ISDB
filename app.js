@@ -5,6 +5,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const passport = require('passport')
+require('./middleware/auth')
+
 
 const songRoutes = require('./routes/songs');
 const userRoutes =  require('./routes/users');

@@ -21,8 +21,9 @@ router.get("/genres", passport.authenticate('jwt', {session: false}), (req, res)
     });
   })
 
-router.get("/albums/:id", passport.authenticate('jwt', {session: false}), (req, res) => {
-    Album.findOne({AlbumId: parseInt(req.params.id)}, function (err, album) {
+router.get("/albums/:id", (req, res) => {
+
+    Album.findOne({AlbumId: parseInt(req.params.id)}, async (err, album) => {
     if (err) {
         res.status(400).json({
           message: "Album not found",
@@ -31,9 +32,9 @@ router.get("/albums/:id", passport.authenticate('jwt', {session: false}), (req, 
         res.status(404).json({message: "Album not found"})
     
       } else  {
+        console.log(await Artist.findOne({ArtistId: album.ArtistId}).exec().Name)
         
-        
-        res.json(album)
+        res.json({Title: album.Title, Artist:  (await Artist.findOne({ArtistId: album.ArtistId}).exec()).Name, Tracks:  (await Track.find({AlbumId: album.AlbumId}).exec()).map(track => track.Name)  })
       }
     });
   })
