@@ -1,0 +1,215 @@
+openapi: 3.0.1
+info:
+  title: ISDB API
+  description: API to get information about songs
+  version: '0.1'
+  contact:
+    email: email@email.com
+servers:
+  - url: https://isdb-project-3.herokuapp.com
+paths:
+  /login:
+    post:
+      description: Auto generated using Swagger Inspector
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                password:
+                  type: string
+                username:
+                  type: string
+            examples:
+              '0':
+                value: |-
+                  {
+                      "username":"swagger",
+                      "password":"123"
+                  }
+              '1':
+                value: |-
+                  {
+                      "username":"swagg3er",
+                      "password":"1233"
+                  }
+      responses:
+        '200':
+          description: Auto generated using Swagger Inspector
+          content:
+            application/json; charset=utf-8:
+              schema:
+                type: string
+              examples: {}
+        '401':
+          description: Auto generated using Swagger Inspector
+          content:
+            application/json; charset=utf-8:
+              schema:
+                type: string
+              examples: {}
+      servers:
+        - url: https://isdb-project-3.herokuapp.com
+      tags:
+        - User
+      summary: Log in to obtain key
+    servers:
+      - url: https://isdb-project-3.herokuapp.com
+  /tracks/1:
+    get:
+      description: input track id in url instead of 1 to get result
+      responses:
+        '200':
+          description: Auto generated using Swagger Inspector
+          content:
+            application/json; charset=utf-8:
+              schema:
+                type: string
+              examples: {}
+      servers:
+        - url: https://isdb-project-3.herokuapp.com
+      tags:
+        - Songs
+    servers:
+      - url: https://isdb-project-3.herokuapp.com
+  /genres:
+    servers:
+      - url: https://isdb-project-3.herokuapp.com
+    get:
+      summary: Obtain list of Genres
+      tags:
+        - Songs
+      responses:
+        200:
+        - description: "success response"
+  /artists/1:
+    servers:
+      - url: https://isdb-project-3.herokuapp.com
+    get:
+      tags:
+        - Songs
+  /albums/99999:
+    servers:
+      - url: https://isdb-project-3.herokuapp.com
+  /albums/1:
+    servers:
+      - url: https://isdb-project-3.herokuapp.com
+    get:
+      tags:
+        - Songs
+      summary: find album with album id
+      description: input album id in url instead of 1 to get result
+  /artists/99999:
+    servers:
+      - url: https://isdb-project-3.herokuapp.com
+  /tracks/99999:
+    servers:
+      - url: https://isdb-project-3.herokuapp.com
+  /tracks:
+    post:
+      description: Auto generated using Swagger Inspector
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                Bytes:
+                  type: integer
+                Composer:
+                  type: string
+                UnitPrice:
+                  type: integer
+                AlbumId:
+                  type: integer
+                GenreId:
+                  type: integer
+                Milliseconds:
+                  type: integer
+                Name:
+                  type: string
+            examples:
+              '0':
+                value: "{\r\n    \"Name\":\"Test Song\",\r\n    \"AlbumId\": 1,\r\n    \"GenreId\":1,\r\n    \"Milliseconds\":1,\r\n    \"Bytes\": 1,\r\n    \"UnitPrice\":1,\r\n    \"Composer\":\"Me I guess\"\r\n}"
+              '1':
+                value: "{\r\n    \"Name\":\"Test Song\",\r\n    \"AlbumId\": 1,\r\n    \"GenreId\":999,\r\n    \"Milliseconds\":1,\r\n    \"Bytes\": 1,\r\n    \"UnitPrice\":1,\r\n    \"Composer\":\"Me I guess\"\r\n}"
+              '2':
+                value: "{\r\n    \"Name\":\"Test Song\",\r\n    \"GenreId\":1,\r\n    \"Milliseconds\":1,\r\n    \"Bytes\": 1,\r\n    \"UnitPrice\":1,\r\n    \"Composer\":\"Me I guess\"\r\n}"
+      responses:
+        '201':
+          description: Auto generated using Swagger Inspector
+          content:
+            application/json; charset=utf-8:
+              schema:
+                type: string
+              examples: {}
+        '400':
+          description: Auto generated using Swagger Inspector
+          content:
+            application/json; charset=utf-8:
+              schema:
+                type: string
+              examples: {}
+      servers:
+        - url: https://isdb-project-3.herokuapp.com
+      summary: add a new track
+      tags:
+        - Songs
+    servers:
+      - url: https://isdb-project-3.herokuapp.com
+  /register:
+    post:
+      description: Auto generated using Swagger Inspector
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                password:
+                  type: string
+                username:
+                  type: string
+            examples:
+              '0':
+                value: |-
+                  {
+                      "username":"swagger",
+                      "password":"123"
+                  }
+              '1':
+                value: |-
+                  {
+                      "username":"swagger",
+                      "password":"123"
+                  }
+      responses:
+        '201':
+          description: Auto generated using Swagger Inspector
+          content:
+            application/json; charset=utf-8:
+              schema:
+                type: string
+              examples: {}
+        '401':
+          description: Auto generated using Swagger Inspector
+          content:
+            application/json; charset=utf-8:
+              schema:
+                type: string
+              examples: {}
+      servers:
+        - url: https://isdb-project-3.herokuapp.com
+      summary: gain access to api by making an account
+      tags:
+        - User
+    servers:
+      - url: https://isdb-project-3.herokuapp.com
+tags:
+  - name: User
+    description: These commands reference the user
+  - description: |-
+      These methods fetch data about songs
+      All song methods require jwt authorization code from logging in             
+    name: Songs
