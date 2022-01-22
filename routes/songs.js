@@ -71,7 +71,7 @@ router.get('/artists/:id', passport.authenticate('jwt', { session: false }), (re
         message: 'Track not found',
       });
     } else if (!artist) {
-      res.status(404).json({ message: 'Track not found' });
+      res.status(404).json({ message: 'Artist not found' });
     } else {
       const albums = (await Album.find({ ArtistId: artist.ArtistId }).exec());
       res.json({
