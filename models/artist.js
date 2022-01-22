@@ -3,7 +3,8 @@ const mongoose = require('mongoose')
 const artistSchema = new mongoose.Schema({
     ArtistId:{
         type:Number,
-        required: true
+        required: true,
+        unique:true
     },
     Name:{
         type:String,

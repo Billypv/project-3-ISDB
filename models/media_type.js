@@ -3,7 +3,8 @@ const mongoose = require('mongoose')
 const mediaTypeSchema = new mongoose.Schema({
     MediaTypeId:{
         type:Number,
-        required: true
+        required: true,
+        unique:true
     },
     Name:{
         type:String,

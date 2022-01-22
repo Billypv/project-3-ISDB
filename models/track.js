@@ -3,7 +3,8 @@ const mongoose = require('mongoose')
 const trackSchema = new mongoose.Schema({
     TrackId:{
         type:Number,
-        required:true
+        required:true,
+        unique:true
     },
     Name: {
         type:String,
@@ -12,10 +13,10 @@ const trackSchema = new mongoose.Schema({
     AlbumId:{
         type:Number,
         required:true
+        
     },
     MediaTypeId:{
-        type:Number,
-        required:true
+        type:Number
     },
     GenreId:{
         type:Number,

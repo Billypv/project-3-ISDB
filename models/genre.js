@@ -3,7 +3,8 @@ const mongoose = require('mongoose')
 const genreSchema = new mongoose.Schema({
     GenreId:{
         type:Number,
-        required: true
+        required: true,
+        unique:true
     },
     Name:{
         type:String,
