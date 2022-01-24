@@ -49,7 +49,7 @@ router.get('/tracks/:id', passport.authenticate('jwt', { session: false }), (req
     } else {
       res.json({
         Title: track.Name,
-        Album: (await Album.findOne({ AlbumId: track.AlbumId }).exec()).Name,
+        Album: (await Album.findOne({ AlbumId: track.AlbumId }).exec()).Title,
         Artist: (await Artist.findOne(
           { ArtistId: (await Album.findOne({ AlbumId: track.AlbumId }).exec())
         .ArtistId }).exec()).Name,
